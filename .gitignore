@@ -3,3 +3,13 @@ Migrations
 *.db-journal
 *.sqlite
 *.sqlite-journal
+
+# Build output
+bin/
+obj/
+
+# IDE / user
+.vs/
+.vscode/
+*.user
+*.suo

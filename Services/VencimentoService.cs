@@ -69,7 +69,7 @@ public class VencimentoService : IVencimentoService
     {
         var nomesClientes = await _context.Clientes.Select(c => c.Nome).ToListAsync();
         var paraRemover = await _context.Vencimentos
-            .Where(v => !nomesClientes.Contains(v.Cliente))
+            .Where(v => !nomesClientes.Contains(v.Cliente ?? ""))
             .ToListAsync();
 
         if (paraRemover.Count > 0)

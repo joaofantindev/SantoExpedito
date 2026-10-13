@@ -45,10 +45,9 @@
                 var iniciais = string.Concat(p.Nome.Split(' ').Select(pal => pal.Length > 0 ? pal[0].ToString() : "")).ToUpper();
                 if (iniciais.Length > 2) iniciais = iniciais[..2];
                 var banhosCalc = 0;
-                if (tutorCliente != null && ViewBag.BanhosRestantesDict != null)
+                if (tutorCliente != null && ViewBag.BanhosRestantesDict is Dictionary<int, int> dict)
                 {
-                    var dict = (Dictionary<int, int>)ViewBag.BanhosRestantesDict;
-                    if (dict.ContainsKey(tutorCliente.Id)) banhosCalc = dict[tutorCliente.Id];
+                    if (dict.TryGetValue(tutorCliente.Id, out var banhos)) banhosCalc = banhos;
                 }
                 var medicamentoHtml = p.Medicamento ? (!string.IsNullOrEmpty(p.MedicamentoNome) ? $"Sim - {p.MedicamentoNome}" : "Sim") : "Não";
                 <div class="detail-content">
